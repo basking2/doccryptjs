@@ -4,7 +4,9 @@
   "description": "Use normal SSL algorithms to create encrypted documents that many users might access with a password.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "jest": "jest",
+    "test_off": "jest my-test --notify --config=config.json",
+    "test": "jest"
   },
   "author": "Sam Baskinger <basking2@yahoo.com>",
   "license": "MIT",
@@ -18,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/basking2/docryptjs/issues"
   },
-  "homepage": "https://github.com/basking2/docryptjs#readme"
+  "homepage": "https://github.com/basking2/docryptjs#readme",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
 }
