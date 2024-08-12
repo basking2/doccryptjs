@@ -1,0 +1,5 @@
+class DocCrypt {
+    constructor(parameters) {
+
+    }
+}
