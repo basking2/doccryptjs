@@ -6,25 +6,48 @@ test('ok', () => {
 });
   
 test('2k key', async () => {
-    const dc = new doccrypt.DocCrypt({'password': 'hi', 'salt': 'moo', 'keylength': 256})
-    const key = await dc.key()
+    const key = await doccrypt.DocCrypt.key('hi', 'moo', 256)
     expect(key).not.toBeNull()
     expect(key.length).toBe(256)
 })
 
 test('32 byte iv', async () => {
-    const dc = new doccrypt.DocCrypt({'ivlength': 32})
-    const iv = await dc.iv()
+    const iv = await doccrypt.DocCrypt.iv(32)
     expect(iv).not.toBeNull()
     expect(iv.length).toBe(32)
 })
 
 test('cipher', async () => {
-    const dc = new doccrypt.DocCrypt({'password': 'pw'})
-    const enc = await dc.encrypt("test")
+    const dc = new doccrypt.DocCrypt.aes256cbc()
+    const enc = await dc.encryptString('pw', 'salt', "test")
     console.log(enc)
-    const denc = await dc.decrypt(enc)
+    enc.password = 'pw'
+    enc.salt = 'salt'
+    const denc = await dc.decryptString(enc)
     console.log(denc)
 
     expect('test').toEqual(denc)
+})
+
+test('cipher w/ JSON', async () => {
+    const dc = new doccrypt.DocCrypt.aes256cbc()
+    let enc = await dc.encryptString('pw', 'salt', "test")
+    console.log(enc)
+    enc.password = 'pw'
+    enc.salt = 'salt'
+
+    enc = JSON.stringify(enc)
+    console.log(`encoded ${enc}`)
+    enc = JSON.parse(enc)
+
+    const denc = await dc.decryptString(enc)
+    console.log(denc)
+
+    expect('test').toEqual(denc)
+})
+
+test('getCiphers', () => {
+    for (var v of doccrypt.DocCrypt.getCiphers()) {
+        console.info(v)
+    }
 })
