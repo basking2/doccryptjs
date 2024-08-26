@@ -12,4 +12,6 @@ nodejs Crypto implementation and convert such into browser JS.
 npm run bulid
 git add -u
 git commit -m "Checking in new build."
+
+npm publish --access public
 ```

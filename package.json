@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Use normal SSL algorithms to create encrypted documents that many users might access with a password.",
   "main": "index.js",
+  "private": false,
   "scripts": {
     "jest": "jest",
     "test_off": "jest my-test --notify --config=config.json",
