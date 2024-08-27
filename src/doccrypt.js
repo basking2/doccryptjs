@@ -13,6 +13,10 @@ class DocCrypt {
         return crypto.getCiphers()
     }
 
+    static salt(len) {
+        return crypto.randomBytes(len).toString('hex');
+    }
+
     /**
      * A factory method.
      * @returns A DocCrypt object that uses the AES-256-CBC cipher.

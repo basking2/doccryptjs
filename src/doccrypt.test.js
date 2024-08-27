@@ -48,6 +48,11 @@ test('cipher w/ JSON', async () => {
 
 test('getCiphers', () => {
     for (var v of doccrypt.DocCrypt.getCiphers()) {
-        console.info(v)
+        console.info(`Cipher ${v}`)
     }
+})
+
+test('salt', () => {
+    const s = doccrypt.DocCrypt.salt(32)
+    expect(s.length).toBe(64)
 })
