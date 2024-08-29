@@ -86,9 +86,13 @@ class DocCrypt {
         iv = new Uint8Array(iv)
     
         const decipher = crypto.createDecipheriv(this.algorithm, key, iv)
-        let decrypted = decipher.update(ciphertext, encoding, 'utf8')
-        decrypted += decipher.final('utf8')
-        return Promise.resolve(decrypted)
+        try {
+            let decrypted = decipher.update(ciphertext, encoding, 'utf8')
+            decrypted += decipher.final('utf8')
+            return Promise.resolve(decrypted)
+        } catch (e) {
+            return Promise.reject(e)
+        }
     }
 }
 

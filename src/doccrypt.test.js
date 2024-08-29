@@ -29,6 +29,17 @@ test('cipher', async () => {
     expect('test').toEqual(denc)
 })
 
+test('bad password', async () => {
+    const dc = new doccrypt.DocCrypt.aes256cbc()
+    const enc = await dc.encryptString('pw', 'salt', "test")
+    console.log(enc)
+    enc.password = 'pw-wrong'
+    enc.salt = 'salt'
+    const denc = await dc.decryptString(enc).catch(e => Promise.resolve("ok"))
+    console.log(denc)
+    expect('ok').toEqual(denc)
+})
+
 test('cipher w/ JSON', async () => {
     const dc = new doccrypt.DocCrypt.aes256cbc()
     let enc = await dc.encryptString('pw', 'salt', "test")
