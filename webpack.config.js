@@ -8,10 +8,11 @@ const isProduction = process.env.NODE_ENV == 'production';
 
 
 const config = {
-    entry: './src/doccrypt.js',
+    entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'doccrypt.js',
+        filename: 'index.js',
+        library: 'DocCrypt',
     },
     devServer: {
         open: true,
