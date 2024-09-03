@@ -1,1 +1,0 @@
-const doccrypt = require("./doccrypt.js")

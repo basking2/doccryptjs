@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-    "entry": "./src/index.js",
+    "entry": "./src/doccrypt.js",
     "output": {
         path: path.resolve(__dirname, 'lib'),
         filename: "doccrypt.js"
