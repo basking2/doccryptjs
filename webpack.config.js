@@ -6,22 +6,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
-
 const config = {
-    entry: './src/index.js',
+    entry: './src/doccrypt.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname),
         filename: 'index.js',
-        library: 'DocCrypt',
-    },
-    devServer: {
-        open: true,
-        host: 'localhost',
+        library: {
+            name: 'DocCrypt',
+            type: 'umd'
+        }
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: 'index.html',
-        }),
+        //new HtmlWebpackPlugin({
+        //    template: 'index.html',
+        //}),
 
         new webpack.ProvidePlugin({
             process: 'process/browser',
@@ -56,10 +54,9 @@ const config = {
 module.exports = () => {
     if (isProduction) {
         config.mode = 'production';
-        
-        
     } else {
         config.mode = 'development';
     }
+
     return config;
 };
