@@ -16,6 +16,7 @@ module.exports = {
             {
                 test: /\css$/,
                 use: [
+                    /*
                     {
                         loader: "style-loader"
                     },
@@ -25,6 +26,7 @@ module.exports = {
                     {
                         loader: "babel-loader"
                     },
+                    */
                 ]
             }
         ]
@@ -33,6 +35,7 @@ module.exports = {
         fallback: {
             crypto: require.resolve('crypto-browserify'),
             stream: require.resolve('stream-browserify'),
+            vm: 'vm/'
         }
     }
 }
