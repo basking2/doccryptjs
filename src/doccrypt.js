@@ -1,6 +1,5 @@
-const { isTypedArray } = require('node:util/types')
 
-crypto = require ('node:crypto')
+crypto = require ('crypto')
 
 class DocCrypt {
     constructor(parameters = {}) {
