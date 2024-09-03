@@ -45,9 +45,6 @@ const config = {
         ],
     },
     resolve: {
-        alias: {
-            process: "process/browser",
-        },
         fallback: {
             stream: require.resolve('stream-browserify'),
             crypto: require.resolve('crypto-browserify'),
