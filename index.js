@@ -1,4 +1,4 @@
-const { DocCrypt } = require("./lib/doccrypt")
+const { DocCrypt } = require("./dist/doccrypt")
 
 module.exports = {
     DocCrypt
