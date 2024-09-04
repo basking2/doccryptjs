@@ -30,7 +30,7 @@ class DocCrypt {
 
     static async key(password, salt, keylength) {
         return new Promise((resolve, reject) => {
-            crypto.scrypt(password, salt, keylength, (err, buff) => {
+            crypto.pbkdf2(password, salt, 10000, keylength, 'sha512', (err, buff) => {
                 if (err) {
                     return reject(err)
                 } 
