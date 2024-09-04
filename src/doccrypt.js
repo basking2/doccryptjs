@@ -1,7 +1,7 @@
 
 const crypto = require ('crypto')
 
-export class DocCrypt {
+class DocCrypt {
     constructor(parameters = {}) {
         this.keylength = parameters['keylength'] || 32
         this.ivlength = parameters['ivlength'] || 16
@@ -94,3 +94,5 @@ export class DocCrypt {
         }
     }
 }
+
+module.exports = { DocCrypt }
