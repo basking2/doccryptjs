@@ -22,6 +22,9 @@ const config = {
         //}),
 
         new webpack.ProvidePlugin({
+            Buffer: [ 'buffer', 'Buffer' ]
+        }),
+        new webpack.ProvidePlugin({
             process: 'process/browser',
         })
 
@@ -47,7 +50,7 @@ const config = {
         fallback: {
             stream: require.resolve('stream-browserify'),
             crypto: require.resolve('crypto-browserify'),
-            buffer: 'buffer',
+            buffer: 'buffer/',
         }
     }
 };
